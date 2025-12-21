@@ -290,8 +290,69 @@ section.allElems{
 
 .motivational-quote-fullpage{
     display: block;
+    position: relative;
 }
 
 .motivational-quote-fullpage .motivational-container{
-  
+   height: 350px;
+   width: 60%;
+   position: absolute;
+   border-radius: 50px;
+   top: 48%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+.motivational-quote-fullpage .motivational-container::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--tri1);
+    border-radius: 50px;
+    scale: 1.15;
+    filter: blur(120px);
+    z-index: 8;
+}
+.motivational-quote-fullpage .motivational-container .motivation-wrapper{
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    background-color: var(--tri1);
+    border-radius: 25px;
+    padding: 15px;
+
+}
+.motivation-1{
+    background-color: var(--tri2);
+    border-radius: 20px ;
+    padding: 12px;
+    width: fit-content;
+}
+.motivation-1 h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+.motivation-2{
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.motivation-2 h2{
+    font-size: 40px;
+   text-align: center;
+    font-weight: 700;
+    color: var(--sec);
+}
+.motivation-3 h2{
+   text-align: center;
+   color: var(--pri);
+
+}
+.motivational-quote-fullpage .motivational-container .motivation-wrapper img{
+    position: absolute;
+    right: 7%;
+    top: 10%;
+    height: 60px;
+    rotate: 180deg;
+    opacity: 0.3;
 }
