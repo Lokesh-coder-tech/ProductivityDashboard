@@ -208,3 +208,31 @@ resetBtn.addEventListener('click', resetTimer)
 }
 
 pomodoroTimer();
+
+
+let headerDate = document.querySelector('.header1 h1')
+let data = null
+
+async function weatherAPICall(city) {
+
+  let apikey = `3bf28cbe5cb14c8cb83a97b87dc6d370`;
+
+  let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
+
+  data = await response.json()
+
+  console.log(data.main);
+}
+
+weatherAPICall("ujjain");
+ 
+let date = null
+function timeDate() {
+  date = new Date()
+  console.log(date.get());
+  headerDate.innerHTML = 'Saturday 5:00pm'
+  
+}
+timeDate()
+
+
