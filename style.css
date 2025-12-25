@@ -4,19 +4,22 @@
     --tri1: #FEBA17;
     --tri2: #74512D;
     --red: red;
+    --black: rgba(0, 0, 0, 0.2);
+    --green: green;
+    --lightgreen: rgb(0, 128, 79);
 }
 @font-face {
-    font-family: aeonik;
+    font-family: aeonikLight;
     font-weight: 200;     
     src: url(./fonnts.com-Aeonik_Light.ttf);
 }
 @font-face {
-    font-family: aeonik;
+    font-family: aeonikRegular;
     font-weight:500;
     src: url(./fonnts.com-Aeonik-Regular.ttf);
 }
 @font-face {
-    font-family: aeonik;
+    font-family: aeonikBold;
     font-weight: 700;    
     src: url(./fonnts.com-Aeonik-Bold.ttf);
 }
@@ -24,7 +27,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: aeonic;
+    font-family: aeonicLight;
     color: var(--pri);
 }
 html, body{
@@ -41,17 +44,47 @@ html, body{
 section.allElems{
     height: 100%;
     width: 100%;
-    padding: 40px 30px;
+    padding: 20px 30px;
     padding-top: 40px;
     position: absolute;
 }
-.allElems header{
-    height: 300px;
+section nav{
+    height: 70px;
     width: 100%;
+    background-color: var(--tri2);
+    margin-top: -10px;
+    border-radius: 10px;
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+section nav h2{
+    font-family: aeonikBold;
+    font-size: 30px;
+    pointer-events: none;
+}
+section nav button{
+    color: var(--sec);
+    background-color: var(--pri);
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+}
+section nav button:active{
+    scale: 0.9;
+}
+.allElems header{
+    height: 250px;
+    width: 100%;
+    margin-top: 25px;
     background-image: url('https://i.pinimg.com/1200x/fa/44/44/fa44445ae6aa34e0a4ef11d91c9cfbd9.jpg');
     background-size: cover;
     background-position: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -61,24 +94,29 @@ section.allElems{
 header .header1 h1{
     font-size: 70px;
 }
+header .header1 h2{
+    font-size: 30px;
+    font-weight: 500;
+}
 header .header1 h4{
     font-size: 40px;
     font-weight: 500;
+    
 }
 header .header2 h1{
     font-size: 50px;
 }
 header .header2 h2{
     font-weight: 500;
-    font-size: 20px;
+    font-size: 22px;
 }
 header .header2 h4{
     font-weight: 500;
-    font-size: 20px;
+    font-size: 22px;
 }
 header .header2 h3{
     font-weight: 500;
-    font-size: 20px;
+    font-size: 22px;
 }
 .allElems .allFeature {
     display: flex;
@@ -96,7 +134,7 @@ header .header2 h3{
     position: relative;
     transition: all 0.2s ease;
     cursor: pointer;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 20px var(--black);
 
 }
 .elem img{
@@ -247,7 +285,7 @@ header .header2 h3{
 .task button{
     padding: 8px 20px;
     color: var(--pri);
-    background-color:green;
+    background-color: var(--green);
     font-size: 17px;
     border-radius: 5px;
     border: none;
@@ -408,20 +446,20 @@ header .header2 h3{
     margin: 10px;
     border-radius: 5px;
     border: none;
-    box-shadow: 3px 3px 0px black;
+    box-shadow: 3px 3px 0px var(--black);
     transition: all ease 0.2s;
     font-weight: 700;
 }
 .pomo-timer button:active{
     scale: 0.95;
-    box-shadow: 0px 0px 0px black;
+    box-shadow: 0px 0px 0px var(--black);
 }
 .pomodoro-timer-fullpage .session{
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translate(-50%, 0);
-    background-color: rgb(0, 128, 79);
+    background-color: var(--lightgreen);
     padding: 13px 30px;
     font-size: 30px;
     border-radius: 5px;

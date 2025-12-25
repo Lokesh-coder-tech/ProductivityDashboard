@@ -117,25 +117,31 @@ dailyPlanner();
 
 
 function motivationalQuote() {
-  
-let quote = document.querySelector('.motivation-2 h2')
-let author = document.querySelector('.motivation-3 h2')
 
+  let quote = document.querySelector('.motivation-2 h2');
+  let author = document.querySelector('.motivation-3 h2');
 
-async function fetchQuote() {
+  async function fetchQuote() {
+    try {
+      let response = await fetch('https://random-quotes-freeapi.vercel.app/api/random');
+      let data = await response.json();
 
-   let response = await fetch('https://random-quotes-freeapi.vercel.app/api/random')
+      if (quote && author) {
+        quote.innerText = data.quote;
+        author.innerText = `— ${data.author}`;
+      }
+    } catch (error) {
+      console.error("Quote fetch error:", error);
+      if (quote) quote.innerText = "Stay motivated 💪";
+      if (author) author.innerText = "";
+    }
+  }
 
-   let data = await response.json() ;
-
-   quote.innerHTML = data.quote
-   author.innerHTML = data.author
-   
-
+  fetchQuote();
 }
-fetchQuote();
-}
+
 motivationalQuote();
+
 
 
 function pomodoroTimer() {
@@ -210,29 +216,90 @@ resetBtn.addEventListener('click', resetTimer)
 pomodoroTimer();
 
 
-let headerDate = document.querySelector('.header1 h1')
+function dailyData() {
+  let headerTime = document.querySelector('.header1 h1')
+let headerDate = document.querySelector('.header1 h2')
+let headerTemp = document.querySelector('.header2 h1')
+let headerFeels = document.querySelector('.header2 h2')
+let headerHumidity = document.querySelector('.header2 h3')
+let headerWind = document.querySelector('.header2 h4')
+
 let data = null
 
 async function weatherAPICall(city) {
 
   let apikey = `3bf28cbe5cb14c8cb83a97b87dc6d370`;
+  let response = await       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
 
-  let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
+  data = await response.json() 
 
-  data = await response.json()
-
-  console.log(data.main);
+  headerTemp.innerHTML = `${data.main.temp}°C`
+  headerFeels.innerHTML = `Feels like: ${data.main.feels_like}°C`
+  headerHumidity.innerHTML = `Humdidity: ${data.main.humidity} %`
+  headerWind.innerHTML = `Wind-Speed: ${data.wind.speed} Km/h`
 }
 
 weatherAPICall("ujjain");
  
+
 let date = null
 function timeDate() {
+  const totalDaysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const totalMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
   date = new Date()
-  console.log(date.get());
-  headerDate.innerHTML = 'Saturday 5:00pm'
+  let dayOfWeek = totalDaysOfWeek[date.getDay()]
+  let hours = date.getHours()
+  let minutes = date.getMinutes()
+  // let seconds = date.getSeconds()
+  let tarik = date.getDate()
+  let month = totalMonths[date.getMonth()]
+  let year = date.getFullYear()
+
+
+  headerDate.innerHTML =`${tarik} ${month} ${year} `
+ 
+  if(hours>12){
+     headerTime.innerHTML = `${dayOfWeek}, ${String(hours - 12).padStart('2', '0')}:${String(minutes).padStart('2', '0')} PM`
+  }else{
+     headerTime.innerHTML = `${dayOfWeek}, ${String(hours).padStart('2', '0')}:${String(minutes).padStart('2', '0')} AM`
+
+  }
   
 }
 timeDate()
 
 
+}
+
+dailyData();
+
+
+let theme = document.querySelector('section nav .theme')
+
+let rootElement = document.documentElement
+
+ let flag = 0;
+theme.addEventListener('click', function(){
+  console.log('hello');
+  
+ if(flag == 0){
+    rootElement.style.setProperty('--pri', '#EAE0CF')
+  rootElement.style.setProperty('--sec', '#222831' )
+  rootElement.style.setProperty('--tri1', '#94B4C1' )
+  rootElement.style.setProperty('--tri2', '#547792' )
+  flag = 1
+ }else if(falg == 1){
+    rootElement.style.setProperty('--pri', '#000000')
+  rootElement.style.setProperty('--sec', '#1DCD9F' )
+  rootElement.style.setProperty('--tri1', '#222222' )
+  rootElement.style.setProperty('--tri2', '#169976' )
+  flag = 2
+ }else if(flag == 2){
+      rootElement.style.setProperty('--pri', '#F8F4E1')
+  rootElement.style.setProperty('--sec', '#381c0a' )
+  rootElement.style.setProperty('--tri1', '#FEBA17' )
+  rootElement.style.setProperty('--tri2', '#74512D' )
+  flag = 0
+ }
+
+})
