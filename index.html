@@ -49,8 +49,8 @@
             <h2>Pomodoro Timer</h2>
         </div>
          <div class="goals elem" id="4">
-            <img src="./images/img5.jpg" alt="">
-           <h2>Daily Goals</h2>
+            <img src="./images/img6.jpg" alt="">
+           <h2>Expenses Tracking</h2>
         </div>
        </div>
      </section>
@@ -115,9 +115,30 @@
           <button class="reset">reset</button>
         </div>
      </section>
-     <section class="fullElem daily-goals-fullpage">
-      <button class="back" id="4">Close</button>
-        <h1>Daily Goals</h1>
+     <section id="expenses-section" class="fullElem expenses-modal">
+      <div class="expenses-header">
+        <h1>Your Daily Expenses Tracker</h1>
+        <button class="close-btn" onclick="closeExpenses()">Close</button>
+      </div>
+
+      <div class="expenses-content">
+        <div class="expense-card input-card">
+            <h3>Add New</h3>
+            <input type="text" id="expense-name" placeholder="Item Name (e.g. Books)">
+            <input type="number" id="expense-amount" placeholder="Amount (₹)">
+            <input type="date" id="expense-date">
+            <button onclick="addExpense()">Add Expense</button>
+        </div>
+
+        <div class="expense-card list-card">
+            <div class="total-header">
+                <h3>Total Spent</h3>
+                <h2 id="total-display">₹0.00</h2>
+            </div>
+            <ul id="expense-list">
+                </ul>
+        </div>
+     </div>
      </section>
      </div>
     <script src="script.js"></script>

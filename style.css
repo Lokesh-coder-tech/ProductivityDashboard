@@ -81,7 +81,7 @@ section nav button:active{
     height: 250px;
     width: 100%;
     margin-top: 25px;
-    background-image: url('https://i.pinimg.com/1200x/fa/44/44/fa44445ae6aa34e0a4ef11d91c9cfbd9.jpg');
+    background-image: url('https://i.pinimg.com/1200x/81/5c/42/815c42f139b35c18b336b6db200862a8.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 25px;
@@ -92,7 +92,7 @@ section nav button:active{
     padding: 50px;
 }
 header .header1 h1{
-    font-size: 70px;
+    font-size: 50px;
 }
 header .header1 h2{
     font-size: 30px;
@@ -136,6 +136,10 @@ header .header2 h3{
     cursor: pointer;
     box-shadow: 5px 5px 20px var(--black);
 
+}
+.elem:hover{
+    box-shadow: 0.5px 0.5px 20px var(--pri);
+    scale: 1.02;
 }
 .elem img{
     width: 100%;
@@ -466,3 +470,111 @@ header .header2 h3{
 
 }
  /* (0, 191, 255) */
+
+ 
+ /* The Modal Background - Hidden by default */
+.expenses-modal {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--sec); /* Dark Coffee Brown */
+    z-index: 2000;
+    padding: 40px;
+    box-sizing: border-box;
+    font-family:  aeonikLight;
+    color: #f5f5dc; /* Cream Text */
+}
+
+.expenses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--tri2);
+    padding-bottom: 10px;
+}
+.expenses-header h1{
+    font-size: 50px;
+} 
+
+.close-btn {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Layout for Input and List */
+.expenses-content {
+    display: flex;
+    gap: 30px;
+    height: 80%;
+}
+
+.expense-card {
+    background-color: var(--tri2); /* Lighter Brown */
+    padding: 25px;
+    border-radius: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Input Styling */
+.input-card input {
+    background-color: #f5f5dc; /* Cream Background */
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    color: #3e2723;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.input-card button {
+    background-color: var(--tri1); /* Gold Accent */
+    color: var(--pri);
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 25px;
+    margin-top: auto;
+}
+
+.input-card button:hover {
+    background-color: var(--tri1);
+}
+
+/* List Styling */
+.list-card ul {
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.expense-item {
+    background-color: var(--sec);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 5px solid var(--tri1);
+}
+
+.delete-x {
+    color: #ef9a9a;
+    cursor: pointer;
+    margin-left: 10px;
+}

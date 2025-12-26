@@ -274,7 +274,8 @@ timeDate()
 dailyData();
 
 
-let theme = document.querySelector('section nav .theme')
+function themeChange(){
+  let theme = document.querySelector('section nav .theme')
 
 let rootElement = document.documentElement
 
@@ -303,3 +304,76 @@ theme.addEventListener('click', function(){
  }
 
 })
+
+}
+themeChange();
+
+
+// 1. OPEN & CLOSE MODAL
+function openExpenses() {
+    document.getElementById('expenses-section').style.display = 'block';
+}
+
+function closeExpenses() {
+    document.getElementById('expenses-section').style.display = 'none';
+}
+
+// 2. EXPENSE LOGIC
+let expenses = [];
+
+function addExpense() {
+    const name = document.getElementById('expense-name').value;
+    const amount = parseFloat(document.getElementById('expense-amount').value);
+    const date = document.getElementById('expense-date').value;
+
+    if(name && amount) {
+        const expense = {
+            id: Date.now(),
+            name: name,
+            amount: amount,
+            date: date || 'Today'
+        };
+        
+        expenses.push(expense);
+        renderList();
+        
+        // Clear inputs
+        document.getElementById('expense-name').value = '';
+        document.getElementById('expense-amount').value = '';
+    } else {
+        alert("Please enter a name and amount!");
+    }
+}
+
+function renderList() {
+    const list = document.getElementById('expense-list');
+    const totalDisplay = document.getElementById('total-display');
+    
+    list.innerHTML = '';
+    let total = 0;
+
+    expenses.forEach(exp => {
+        total += exp.amount;
+        
+        const li = document.createElement('li');
+        li.className = 'expense-item';
+        li.innerHTML = `
+            <div>
+                <strong>${exp.name}</strong> <br>
+                <small>${exp.date}</small>
+            </div>
+            <div>
+                <span>₹${exp.amount.toFixed(2)}</span>
+                <span class="delete-x" onclick="removeExpense(${exp.id})">✖</span>
+            </div>
+        `;
+        list.appendChild(li);
+    });
+
+    totalDisplay.innerText = "₹" + total.toFixed(2);
+}
+
+function removeExpense(id) {
+    expenses = expenses.filter(e => e.id !== id);
+    renderList();
+}
